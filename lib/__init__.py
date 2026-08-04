@@ -1,27 +1,16 @@
 """Shared helpers for the Facebook Pages Skills bundle.
 
-Public surface (everything in `__all__`) is what skills import. Internal
-utilities (e.g., `build_post_url`, `signup_nudge`, `PUBLORA_SIGNUP_URL`)
-remain importable from their submodules but are not re-exported here.
+MCP calls are made by the agent host, not by this Python package. The package
+only contains deterministic helpers that are useful to runtimes that load the
+skills as Markdown.
 """
 from .url_parser import parse_facebook_url
-from .publora_client import PubloraClient, PubloraError
 from .approval import render_approval_card
-from .backend_selector import (
-    active_backend,
-    manual_mode_message,
-    publish,
-)
 from .apify_client import ApifyClient, ApifyError, ApifyAuthError
 
 __all__ = [
     "parse_facebook_url",
-    "PubloraClient",
-    "PubloraError",
     "render_approval_card",
-    "active_backend",
-    "manual_mode_message",
-    "publish",
     "ApifyClient",
     "ApifyError",
     "ApifyAuthError",

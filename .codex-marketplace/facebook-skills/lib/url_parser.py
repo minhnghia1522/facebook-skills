@@ -39,7 +39,7 @@ Returns a normalized dict:
     }
 
 Note: fb.com is normalized to www.facebook.com. The bundle targets business
-Pages, not personal profiles (Publora cannot post to personal profiles). A
+ Pages, not personal profiles. A
 "share/p" link hides the page and post ids behind an opaque token, so the parser
 flags it as url_type "share" and asks the user to paste the post text.
 """

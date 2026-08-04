@@ -32,11 +32,11 @@ disclosure decision within 14 days.
 
 ## Scope notes
 
-- This bundle never ships hardcoded credentials. API tokens (Apify,
-  Publora) are read from environment variables or `.env` files that are
+- This bundle never ships hardcoded credentials. The optional Apify token is
+  read from environment variables or `.env` files that are
   gitignored; see `.env.example`.
-- Scripts in `lib/` and `scripts/` perform HTTP calls only to the Apify
-  and Publora APIs and never execute shell commands built from remote
-  content.
+- Scripts in `lib/` and `scripts/` perform HTTP calls only to Apify and never
+  execute shell commands built from remote content. Bina MCP calls are made by
+  the configured agent host.
 - Please do not test vulnerabilities against third-party services
-  (Facebook, Apify, Publora) outside their own disclosure programs.
+  (Facebook or Apify) outside their own disclosure programs.

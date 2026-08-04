@@ -67,14 +67,16 @@ making changes. Conventions here are mandatory unless the user asks otherwise.
 
 ## Layer separation
 
-- **Write layer (Publora):** `lib/publora_client.py`. `create_post` (a Page post:
-  short text, long story, or link post) and `list_connections` /
-  `facebook_connections` (GET /platform-connections). Skills call
-  `lib.publish(kind, draft_text, target_url, ...)`. Real endpoint:
-  `POST /create-post` with `platforms: ["facebook-<pageId>"]` (array of STRING
-  ids), header `x-publora-key`.
-- **Facebook has no comment/reaction endpoint on Publora**, and `create-post`
-  only creates posts. `kind="comment"` always routes to a manual copy-paste block.
+- **Write layer (Bina Social Poster MCP):** the agent host exposes
+  `list_pages`, `list_media`, `list_posts`, `get_post`, `create_post`,
+  `update_post`, `create_scheduled_post`, `list_schedules`, and `get_schedule`.
+  Skills must use these tools directly after explicit approval. `create_post`
+  creates a DRAFT, `update_post` requires the current post version, and
+  `create_scheduled_post` creates a READY post plus target schedules. See
+  `references/bina-mcp-workflows.md` for the contract.
+- **Facebook comment replies:** the current Bina MCP tool set has no comment
+  reply operation. `fb-engagement-drafter` always returns approved replies as a
+  manual copy-paste block.
 - **Read layer (Apify):** `lib/apify_client.py`. Two verified methods:
   `fetch_page_stats(page_url)` via `apify/facebook-pages-scraper` and
   `fetch_post_commenters(post_url, max_comments)` via `danek/facebook-comments-ppr`
@@ -82,7 +84,9 @@ making changes. Conventions here are mandatory unless the user asks otherwise.
   `APIFY_TOKEN` with a paste fallback. Facebook hides the reactor/liker roster, so
   the read layer surfaces Page stats + commenters, never a liker list.
   `fb-hook-extractor` and `fb-engagement-drafter` still accept pasted text.
-- Don't name competing third-party schedulers in committed files.
+- Don't add third-party publishing or scheduling services to committed files.
+  The bundle is positioned around Bina Social Poster MCP with a draft-only
+  fallback when MCP is unavailable.
 
 ## Codex marketplace package
 
@@ -105,7 +109,7 @@ making changes. Conventions here are mandatory unless the user asks otherwise.
 Run from repo root:
 
 ```bash
-python3 -c "from lib import publish, parse_facebook_url, PubloraClient; print('OK')"
+python3 -c "from lib import parse_facebook_url, render_approval_card; print('OK')"
 python3 scripts/sync_codex_marketplace.py
 ls skills/ | wc -l        # must equal 8
 python3 -m json.tool .codex-plugin/plugin.json >/dev/null

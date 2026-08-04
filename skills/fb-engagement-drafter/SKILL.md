@@ -1,6 +1,6 @@
 ---
 name: fb-engagement-drafter
-description: Draft replies to comments on your Facebook Page's posts, in your Page voice. Use when the user pastes the comments under one of their Page posts and wants on-brand replies that earn more comments and shares. Drafts 1-3 variants per comment using proven templates (answer, thank plus add value, handle the complaint, turn it into a share). Publora has no Facebook comment endpoint, so every draft returns as a copy-paste block to post yourself. Not for writing top-level posts (use fb-post-writer).
+description: Draft replies to comments on your Facebook Page's posts, in your Page voice. Use when the user pastes comments and wants on-brand replies that earn more comments and shares. Draft 1-3 variants per comment using proven templates. Bina Social Poster MCP currently has no comment-reply tool, so approved replies return as copy-paste blocks. Not for writing top-level posts (use fb-post-writer).
 ---
 
 # Facebook Page Engagement Drafter
@@ -12,9 +12,9 @@ replies; you post them.
 
 ## The honest limitation
 
-Publora has **no Facebook comment endpoint** (its comment and reaction endpoints
-are LinkedIn-only), and `create-post` only creates new posts. So this skill
-**cannot auto-post** a reply to a comment. Every draft comes back as a
+Bina Social Poster MCP currently has **no Facebook comment-reply tool**, and its
+post tools create or schedule top-level posts only. So this skill **cannot
+auto-post** a reply to a comment. Every draft comes back as a
 copy-paste block for you to post in Facebook or Meta Business Suite by hand. This
 is a documented limitation of the publish layer, not a missing feature here.
 
@@ -61,10 +61,10 @@ the target link) and the Page's voice samples.
    feedback!" corporate filler. Keep the Page voice.
 6. **Approval card.** Show each comment, its drafted replies, the template used,
    and the target post URL.
-7. **On approval.** Call `lib.publish(kind="comment", draft_text=<approved>,
-   target_url=<canonical_url>)`. Because Publora has no Facebook comment
-   endpoint, this always returns a copy-paste block. Paste each reply under the
-   comment in Facebook or Meta Business Suite yourself.
+7. **On approval.** Return each approved reply as a copy-paste block. Do not
+   call `create_post` or `create_scheduled_post` because those tools are for
+   top-level posts, not comment replies. Paste each reply under the comment in
+   Facebook or Meta Business Suite yourself.
 
 ## Hard rules
 
@@ -95,7 +95,7 @@ rules:
 > User: "post both"
 >
 > Skill: returns each reply as a copy-paste block with the post URL, since
-> Publora has no Facebook comment endpoint. User pastes them in Facebook.
+> Bina MCP has no Facebook comment-reply tool. User pastes them in Facebook.
 
 ## Files
 

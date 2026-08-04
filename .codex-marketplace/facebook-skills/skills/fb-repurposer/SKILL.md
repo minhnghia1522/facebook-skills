@@ -1,6 +1,6 @@
 ---
 name: fb-repurposer
-description: Repurpose existing content into a native Facebook Page post. Take a LinkedIn post, X thread, blog, or newsletter and rewrite it for a Page: warm the tone, lead with a standalone claim before the "See more" fold, move links to the first comment, strip off-platform artifacts (hashtag walls, "link in bio", @-handles), then humanize and publish via Publora on approval. Not for writing from scratch (use fb-post-writer), auditing a draft (use fb-humanizer), or comment replies (use fb-engagement-drafter).
+description: "Repurpose existing content into a native Facebook Page post. Take a LinkedIn post, X thread, blog, or newsletter and rewrite it for a Page: warm the tone, lead with a standalone claim before the \"See more\" fold, move links to the first comment, strip off-platform artifacts, then humanize and create or schedule the approved post through Bina Social Poster MCP when available. Not for writing from scratch (use fb-post-writer), auditing a draft (use fb-humanizer), or comment replies (use fb-engagement-drafter)."
 ---
 
 # Facebook Repurposer
@@ -60,11 +60,11 @@ comments on your Page (use `fb-engagement-drafter`).
    container (short post or story post), shape used, char count (flag if it
    crosses the 80-char sweet spot), whether a link moved to the first comment,
    primary goal.
-10. **On approval.** Publish via `lib.publish(kind="post", draft_text=<approved>,
-    target_url="https://www.facebook.com/YourPage",
-    platforms=[<FACEBOOK_PLATFORM_ID>], scheduled_time=<iso_or_None>)`. For a
-    deliberate long story post, pass `kind="story"`. The wrapper handles Publora /
-    manual / diy routing.
+10. **On approval.** Follow `../../references/bina-mcp-workflows.md`. Resolve the
+    selected Page with `list_pages`, then call `create_post` with a fresh
+    `idempotency_key` for a draft, or `create_scheduled_post` for an approved
+    schedule. If MCP is unavailable, return a copy-paste block and state that no
+    write occurred.
 
 ## Native-fit rules (source -> Facebook)
 
@@ -114,6 +114,7 @@ rules:
 
 - `../../references/hook-formulas.md` - the 10 Facebook shapes to re-hook with (FB1-FB7 short, FB8-FB10 story)
 - `../../references/algorithm-heuristics.md` - 2026 Facebook Page ranking rules (the under-80 boost, link reach suppression, timing, limits)
+- `../../references/bina-mcp-workflows.md` - Bina MCP read/write workflow and approval contract
 
 ## Related skills
 

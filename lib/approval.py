@@ -1,7 +1,7 @@
 """Approval gate helpers.
 
-Every skill that posts to a Facebook Page MUST present a draft to the user and
-wait for explicit approval before calling Publora. This file is a thin
+Every skill that writes to a Facebook Page MUST present a draft to the user and
+wait for explicit approval before calling a Bina MCP write tool. This file is a thin
 conventions layer, not runtime enforcement. Skills call `render_approval_card`
 to format the draft consistently and then stop until the user says go.
 """

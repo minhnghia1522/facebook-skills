@@ -97,7 +97,7 @@ distribution. Shares are the reach multiplier.
 | Image size (API) | 10 MB (PNG recommended under 1 MB to avoid pixelation) |
 | Image formats | JPEG, PNG, GIF, BMP, TIFF (WebP auto-converted to JPEG) |
 | Video duration (API) | 45 minutes (Facebook native allows up to 4 hours) |
-| Video size | 2 GB via the API (Publora server limit is 512 MB; native is 4 GB) |
+| Video size | Validate the connected MCP/media service limit before upload |
 | Video formats | MP4, MOV |
 | Reels (API) | up to 90 seconds, Pages only, 30 Reels/day/Page |
 
@@ -148,10 +148,10 @@ post.
 - Replying to comments on your Page posts is a ranking action, not just
   community management. A Page that replies fast in the first hour gets more
   reach on that post.
-- Publora has **no Facebook comment endpoint** (comment and reaction endpoints
-  are LinkedIn-only). So the `fb-engagement-drafter` skill drafts comment
-  replies and hands them back as a copy-paste block to post in Facebook or Meta
-  Business Suite by hand. This is a documented limitation, not an oversight.
+- Bina Social Poster MCP currently has **no Facebook comment-reply tool**. So
+  the `fb-engagement-drafter` skill drafts comment replies and hands them back as
+  a copy-paste block to post in Facebook or Meta Business Suite by hand. This is
+  a documented limitation, not an oversight.
 
 ## Pre-publish checklist
 

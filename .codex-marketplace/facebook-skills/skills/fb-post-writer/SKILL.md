@@ -1,6 +1,6 @@
 ---
 name: fb-post-writer
-description: Draft a short punchy Facebook Page post, or a longer story post, using a 2026 Facebook hook formula (one-line opinion, tiny number, ask-the-page question, this-or-that, useful tip, story post) picked by goal (shares, comments, reactions). Favors the under-80-character engagement sweet spot, runs the humanizer pass, and publishes via Publora on approval. Use to write a Page post from notes. Not for replying to comments (use fb-engagement-drafter) or auditing a draft (use fb-humanizer).
+description: Draft a short punchy Facebook Page post, or a longer story post, using Facebook hook formulas selected by goal. Favor the under-80-character engagement sweet spot, run the humanizer pass, and create or schedule the approved post through Bina Social Poster MCP when available. Use to write a Page post from notes. Not for replying to comments (use fb-engagement-drafter) or auditing a draft (use fb-humanizer).
 ---
 
 # Facebook Page Post Writer
@@ -16,7 +16,7 @@ on purpose.
 - User says "write me a Facebook Page post about X"
 - User has a topic or a rough line and wants a sharper, shorter hook
 - User wants to pick a proven Page-post shape and fill in their voice
-- User wants a quick draft that auto-publishes on approval
+- User wants an approved draft saved or scheduled through Bina MCP
 
 ## Formulas this skill uses
 
@@ -70,10 +70,11 @@ shapes (lead here). FB8-FB10 are longer story shapes (use on purpose).
 6. **Optional audit.** Invoke `fb-humanizer --mode audit` for a pass-fail check.
 7. **Approval card.** Show: formula used, full draft, char count (flag if it
    crosses the 80-char sweet spot), suggested posting window, primary goal.
-8. **On approval.** Call `lib.publish(kind="post", draft_text=<approved>,
-   target_url="https://www.facebook.com/YourPage", platforms=[<FACEBOOK_PLATFORM_ID>],
-   scheduled_time=<iso_or_None>)`. For a deliberate long story post, pass
-   `kind="story"`. The wrapper handles Publora / manual / diy routing.
+8. **On approval.** Follow `../../references/bina-mcp-workflows.md`. Resolve the
+   selected Page with `list_pages`, then call `create_post` with a fresh
+   `idempotency_key` for a draft, or `create_scheduled_post` for an approved
+   schedule. Use `TEXT`, `IMAGE`, `VIDEO`, or `LINK` as the `post_type`. If MCP
+   is unavailable, return a copy-paste block and state that no write occurred.
 
 ## Hard rules
 
@@ -103,6 +104,7 @@ rules:
 
 - `../../references/hook-formulas.md` - all 10 Facebook formula skeletons (FB1-FB7 short, FB8-FB10 story)
 - `../../references/algorithm-heuristics.md` - 2026 Facebook Page ranking rules (signals, the under-80 boost, timing, limits)
+- `../../references/bina-mcp-workflows.md` - Bina MCP read/write workflow and approval contract
 - `references/short-post-checklist.md` - the per-post scrub and the under-80 fit check
 
 ## Related skills

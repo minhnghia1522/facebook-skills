@@ -2,8 +2,8 @@
 
 Five templates for replying to comments on your Page's posts. Each keeps the
 Page voice, stays short, and aims to keep the conversation alive (replies in the
-first hour lift reach). Never auto-posted: Publora has no Facebook comment
-endpoint, so these come back as copy-paste blocks.
+first hour lift reach). Never auto-posted: Bina Social Poster MCP currently has
+no Facebook comment-reply tool, so these come back as copy-paste blocks.
 
 ## Contents
 
