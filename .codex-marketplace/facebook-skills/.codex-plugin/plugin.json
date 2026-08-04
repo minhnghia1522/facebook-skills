@@ -3,12 +3,12 @@
   "description": "8 Claude Code and Codex skills for Facebook Pages marketing: short punchy Page posts that favor the under-80-character engagement sweet spot, AI-tell humanizer with pre-publish audit, high-share post hook extraction, comment-reply drafting, weekly Page content planning, Page optimization, cross-platform repurposing, and a real-data audience-insights read layer (Page stats plus commenters via Apify). Bina Social Poster MCP is the optional write layer for pages and schedules.",
   "version": "1.0.10",
   "author": {
-    "name": "Serge Bulaev",
-    "url": "https://github.com/sergebulaev"
+    "name": "Nghialm",
+    "url": "https://github.com/minhnghia1522"
   },
   "license": "MIT",
-  "homepage": "https://github.com/sergebulaev/facebook-skills",
-  "repository": "https://github.com/sergebulaev/facebook-skills",
+  "homepage": "https://github.com/minhnghia1522/facebook-skills",
+  "repository": "https://github.com/minhnghia1522/facebook-skills",
   "keywords": [
     "facebook",
     "facebook pages",
@@ -26,14 +26,14 @@
     "displayName": "Facebook Pages Skills",
     "shortDescription": "Facebook Pages marketing skills for Claude Code and Codex.",
     "longDescription": "A bundle of 8 Facebook Pages marketing skills for Claude Code and Codex: short punchy Page-post writing, humanizing, high-share hook extraction, comment-reply drafting, weekly Page content planning, Page optimization, cross-platform repurposing, and a real-data audience-insights read layer.",
-    "developerName": "Serge Bulaev",
+    "developerName": "Nghialm",
     "category": "Productivity",
     "capabilities": [
       "Interactive",
       "Read",
       "Write"
     ],
-    "websiteURL": "https://github.com/sergebulaev/facebook-skills",
+    "websiteURL": "https://github.com/minhnghia1522/facebook-skills",
     "defaultPrompt": [
       "Write a short punchy Facebook Page post from my notes.",
       "Draft replies to the comments on my latest Page post.",
